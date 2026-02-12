@@ -11,8 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('stock_good_receipts', function (Blueprint $table) {
+        Schema::create('goods_issues', function (Blueprint $table) {
             $table->id();
+
+            $table->string('number')->unique();
+
+            $table->date('date');
+
+            $table->string('department')->nullable();
+
+            $table->text('notes')->nullable();
+
+            $table->foreignId('created_by')
+                ->constrained('users');
+
             $table->timestamps();
         });
     }
@@ -22,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('stock_good_receipts');
+        Schema::dropIfExists('goods_issues');
     }
 };
