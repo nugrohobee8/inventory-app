@@ -20,6 +20,7 @@
             <a class="nav-link" href="/categories">Categories</a>
             <a class="nav-link" href="/products">Products</a>
             <a class="nav-link" href="/warehouses">Warehouses</a>
+            <a class="nav-link" href="/suppliers">Suppliers</a>
         </div>
     </div>
 </nav>

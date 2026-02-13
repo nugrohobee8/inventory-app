@@ -10,7 +10,7 @@ class GoodsReceipt extends Model
 
     protected $fillable = [
         'number',
-        'suppliers_id',
+        'supplier_id',
         'date',
         'notes',
         'created_by',
@@ -22,12 +22,12 @@ class GoodsReceipt extends Model
 
     public function items()
     {
-        return $this->hasMany(GoodsReceiptItem::class, 'goods_receipts_id');
+        return $this->hasMany(GoodsReceiptItem::class, 'goods_receipt_id');
     }
 
     public function supplier()
     {
-        return $this->belongsTo(Supplier::class, 'suppliers_id');
+        return $this->belongsTo(Supplier::class, 'supplier_id');
     }
 
     public function creator()

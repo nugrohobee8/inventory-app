@@ -15,17 +15,25 @@ use Illuminate\Support\Facades\Auth;
 class GoodsReceiptController extends Controller
 {
 
-    /**
-     * List Goods Receipt
-     */
     public function index()
     {
-        $receipts = GoodsReceipt::with('supplier')
-            ->latest()
-            ->paginate(15);
+        $receipts = GoodsReceipt::latest()->get();
 
         return view('goods_receipts.index', compact('receipts'));
     }
+
+    public function show($id)
+    {
+        $goodsReceipt = GoodsReceipt::with([
+            'items.product',
+            'items.warehouse',
+            'supplier'
+        ])->findOrFail($id);
+
+        return view('goods_receipts.show', compact('goodsReceipt'));
+    }
+
+
 
     public function create()
     {
@@ -50,7 +58,7 @@ class GoodsReceiptController extends Controller
 
             $receipt = GoodsReceipt::create([
                 'number' => 'GR-' . now()->format('YmdHis'),
-                'suppliers_id' => $request->suppliers_id,
+                'supplier_id' => $request->supplier_id,
                 'date' => $request->date,
                 'notes' => $request->notes,
                 'created_by' => Auth::id(),

@@ -47,6 +47,11 @@
     </tbody>
 </table>
 
-{{ $receipts->links() }}
+{{-- <h1>Goods Receipts</h1>
+
+@foreach($receipts as $r)
+    <div>{{ $r->number }} — {{ $r->date }}</div>
+@endforeach --}}
+
 
 @endsection

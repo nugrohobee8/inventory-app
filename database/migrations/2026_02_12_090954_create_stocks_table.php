@@ -14,13 +14,8 @@ return new class extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('product_id')
-                ->constrained()
-                ->cascadeOnDelete();
-
-            $table->foreignId('warehouse_id')
-                ->constrained()
-                ->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('warehouse_id')->constrained()->cascadeOnDelete();
 
             $table->integer('qty')->default(0);
 
@@ -29,6 +24,7 @@ return new class extends Migration
             $table->unique(['product_id', 'warehouse_id']);
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -17,23 +17,20 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->foreignId('warehouse_id')->constrained();
 
-            $table->enum('type', ['IN', 'OUT', 'ADJUST']);
-
+            $table->string('type'); // IN / OUT
             $table->integer('qty');
 
-            $table->string('reference_type')->nullable();
-            $table->unsignedBigInteger('reference_id')->nullable();
+            $table->string('reference_type');
+            $table->unsignedBigInteger('reference_id');
 
             $table->text('notes')->nullable();
 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained('users');
 
-            $table->timestamp('created_at')->useCurrent();
-
-            $table->index(['product_id', 'created_at']);
-            $table->index(['reference_type', 'reference_id']);
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GoodsReceiptItem extends Model
 {
     protected $fillable = [
-        'goods_receipts_id',
+        'goods_receipt_id',
         'product_id',
         'warehouse_id',
         'qty',
@@ -15,7 +15,7 @@ class GoodsReceiptItem extends Model
 
     public function receipt()
     {
-        return $this->belongsTo(GoodsReceipt::class, 'goods_receipts_id');
+        return $this->belongsTo(GoodsReceipt::class, 'goods_receipt_id');
     }
 
     public function product()
