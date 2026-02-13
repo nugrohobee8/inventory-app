@@ -14,25 +14,21 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->string('sku', 50)->unique();
-            $table->string('name', 150);
+            $table->string('sku')->unique();
+            $table->string('name');
 
             $table->foreignId('category_id')
                 ->constrained()
                 ->restrictOnDelete();
 
-            $table->foreignId('unit_id')
-                ->constrained()
-                ->restrictOnDelete();
+            $table->string('unit'); // sederhana dulu
 
-            $table->unsignedInteger('min_stock')->default(0);
+            $table->integer('min_stock')->default(0);
 
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();
-
-            $table->index('name');
         });
     }
 
