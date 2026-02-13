@@ -19,6 +19,7 @@
             <a class="nav-link" href="/goods-receipts">Goods Receipt</a>
             <a class="nav-link" href="/categories">Categories</a>
             <a class="nav-link" href="/products">Products</a>
+            <a class="nav-link" href="/warehouses">Warehouses</a>
         </div>
     </div>
 </nav>

@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('code')->unique();
+            $table->string('name');
             $table->string('location')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
